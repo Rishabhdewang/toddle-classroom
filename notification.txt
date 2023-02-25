@@ -1,0 +1,28 @@
+/** 
+ *
+ * NOTIFICATION SYSTEM
+Here are the proposed architecture, technologies, and working details for the notification system.
+
+Architecture:
+To implement the notification system, we suggest creating a separate service or module dedicated solely to this functionality.
+This service will require a distributed event streaming system or framework to enable real-time notification delivery when 
+specific events occur. These events could include the creation or addition of a new assignment, a day before the deadline, 
+or the submission of an assignment.
+
+Technologies:
+We recommend using node.js in combination with either Apache Kafka or RabbitMQ for event distribution. 
+These technologies have proven to be reliable, scalable, and efficient in handling high volumes of event streams.
+
+Working Details:
+Here's a breakdown of how the notification system would work:
+
+When a user creates an assignment, an event is generated.
+The event is then produced and sent to a specific queue.
+A broker is responsible for handling the event, and it is then sent to a specific topic.
+The event is partitioned for efficient distribution across multiple servers.
+Finally, the event is consumed by a designated event subscriber or consumer, who is responsible for delivering 
+the notification to the relevant users.
+Overall, this notification system architecture and technology stack should provide an effective and 
+efficient means of delivering real-time notifications to users when specific events occur
+
+ */

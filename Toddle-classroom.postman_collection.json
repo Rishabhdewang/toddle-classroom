@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "c39ac2b5-b68a-4a2c-b226-042960477ab7",
+		"name": "Toddle-classroom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14936781"
+	},
+	"item": [
+		{
+			"name": "health-check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/ping",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"qD\",\n    \"password\" : \"qwert\",\n    \"type\" : \"TUTOR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"RD\",\n    \"password\" : \"qwert\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create assignments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyIiwidXNlcm5hbWUiOiJTRCIsInR5cGUiOiJUVVRPUiIsImlhdCI6MTY3NzIzOTIyMCwiZXhwIjoxNjc3MzI1NjIwfQ.CavY0_coBEBLvSk4Fwz_z42j_drvsDwLiUZyHgzk3jw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\" : \"test assignment -2 \", \n \"published_at\" : \"2023-03-01\", \n \"created_by\" : 12,\n \"student_ids\" : [\"11\",\"15\"],\n \"deadline_date\" : \"2023-03-18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/create-assignment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"create-assignment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit assignment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExIiwidXNlcm5hbWUiOiJSRCIsInR5cGUiOiJTVFVERU5UIiwiaWF0IjoxNjc3MTU4Mjk5LCJleHAiOjE2NzcyNDQ2OTl9.EZtc2_YUYFNwrtpuMdkmcF9y58lb1_TeVAufmtHSDc8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"assignment_id\" : 2,\n    \"answers\" : \"DASda\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/submit-assignment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"submit-assignment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update assignments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0IiwidXNlcm5hbWUiOiJxRCIsInR5cGUiOiJUVVRPUiIsImlhdCI6MTY3NzE1ODIwNywiZXhwIjoxNjc3MjQ0NjA3fQ.a3Y7QGDDzdEqAMo9I_tOEAfklZeU43yvdpZdx01t3-c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"description\" : \"test assignment update\",\n \"published_at\" : \"2023-12-14\", \n \"created_by\" : 12,\n \"student_ids\" : [\"11\"],\n \"deadline_date\" : \"2023-03-18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/update-assignment/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"update-assignment",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assignment-details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0IiwidXNlcm5hbWUiOiJxRCIsInR5cGUiOiJUVVRPUiIsImlhdCI6MTY3NzE1ODIwNywiZXhwIjoxNjc3MjQ0NjA3fQ.a3Y7QGDDzdEqAMo9I_tOEAfklZeU43yvdpZdx01t3-c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/tutor/all-assignment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tutor",
+						"all-assignment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assignment-feed",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
