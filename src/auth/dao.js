@@ -26,7 +26,7 @@ const signUp = async (request, response) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    let res = await db.one(
+    await db.one(
       "INSERT INTO users(username, password, type) values ($1, $2, $3) returning *",
       [username, hashedPassword, type]
     );
@@ -44,9 +44,7 @@ const login = async (req, res) => {
 
     const user = await db.oneOrNone(
       `SELECT * FROM users where username = $(username)`,
-      {
-        username,
-      }
+      { username }
     );
     if (user === null) return res.status(400).send("unable to find user");
     if (await bcrypt.compare(password, user.password)) {

@@ -63,7 +63,6 @@ const allAssignment = async (req, res) => {
       "select * from assignments where created_by = ${user_id} ",
       { user_id }
     );
-    console.log(allassign);
     return res.send(allassign);
   } catch (e) {
     console.log("error", e);
@@ -83,7 +82,6 @@ const getAssignment = async (req, res) => {
           "select a.* from student_assignments sa  left join assignments as a on sa.assignment_id = a.id where sa.user_id = ${user_id} and sa.assignment_id = ${assignment_id} and sa.is_deleted = false and sa.submitted_at is not null ",
           { assignment_id, user_id }
         );
-        console.log({ assignment });
 
         if (!assignment.length) {
           return res.send("The assignment is not submitted");
@@ -101,7 +99,6 @@ const getAssignment = async (req, res) => {
           "select * from student_assignments sa  left join assignments as a on sa.assignment_id = a.id where assignment_id = ${assignment_id} and sa.is_deleted = false and sa.submitted_at is not null",
           { user_id, assignment_id }
         );
-        console.log(assign);
         return res.send(assign);
       } catch (e) {
         console.log("error", e);
@@ -195,7 +192,7 @@ const submitAssignment = async (req, res) => {
 };
 
 const assignmentFeed = async (req, res) => {
-  let { type, id :user_id } = req.user;
+  let { type, id: user_id } = req.user;
   let { publishedAt, status } = req.query;
   let pcondition = " ";
   let scondition = " ";
@@ -223,9 +220,6 @@ const assignmentFeed = async (req, res) => {
       scondition = "";
   }
 
-
-  console.log({type, user_id, publishedAt, status , pcondition, scondition})
-
   switch (type) {
     case "TUTOR":
       try {
@@ -235,7 +229,6 @@ const assignmentFeed = async (req, res) => {
             "and user_id = ${user_id} and is_deleted = false ",
           { assignment_id, user_id, publishedAt, status }
         );
-        console.log({ assignments });
 
         if (!assignments.length) {
           return res.send("No assignment found");
@@ -255,7 +248,6 @@ const assignmentFeed = async (req, res) => {
             pcondition,
           { user_id }
         );
-        console.log(assignments);
         return res.send(assignments);
       } catch (e) {
         console.log("error", e);
