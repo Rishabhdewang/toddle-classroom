@@ -10,7 +10,7 @@ specific events occur. These events could include the creation or addition of a 
 or the submission of an assignment.
 
 Technologies:
-We recommend using node.js in combination with either Apache Kafka or RabbitMQ for event distribution. 
+We recommend using node.js in combination with simple pub-sub model or Apache Kafka or RabbitMQ for event distribution. 
 These technologies have proven to be reliable, scalable, and efficient in handling high volumes of event streams.
 
 Working Details:
